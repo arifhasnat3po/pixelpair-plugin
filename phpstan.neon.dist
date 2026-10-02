@@ -1,0 +1,18 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 6
+    parallel:
+        maximumNumberOfProcesses: 1
+    phpVersion: 70400
+    paths:
+        - src
+        - pixelpair.php
+        - uninstall.php
+    scanFiles:
+        - pixelpair.php
+        - tests/stubs/consent.php
+        - tests/stubs/edd.php
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+    tmpDir: .cache/phpstan

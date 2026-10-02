@@ -1,0 +1,34 @@
+@use "@wordpress/base-styles/colors" as colors;
+
+.pixelpair-app,
+.pixelpair-dialog {
+	--pixelpair-space-4: 4px;
+	--pixelpair-space-8: 8px;
+	--pixelpair-space-16: 16px;
+	--pixelpair-space-24: 24px;
+	--pixelpair-space-32: 32px;
+	--pixelpair-space-48: 48px;
+	--pixelpair-title: 24px;
+	--pixelpair-heading: 18px;
+	--pixelpair-body: 13px;
+	--pixelpair-help: 12px;
+	--pixelpair-regular: 400;
+	--pixelpair-semibold: 600;
+	--pixelpair-ink: #{colors.$gray-900};
+	--pixelpair-muted: #{colors.$gray-700};
+	--pixelpair-border: #{colors.$gray-300};
+	--pixelpair-control-border: #{colors.$gray-600};
+	--pixelpair-surface: #{colors.$white};
+	--pixelpair-subtle: #{colors.$gray-100};
+	--pixelpair-accent: var(--wp-admin-theme-color, var(--pixelpair-ink));
+	--pixelpair-accent-hover: var(--wp-admin-theme-color-darker-10);
+	--pixelpair-accent-active: var(--wp-admin-theme-color-darker-20);
+	--pixelpair-success: #006b3c;
+	--pixelpair-warning: #8a4b00;
+	--pixelpair-error: #b32d2e;
+	--pixelpair-info: #135e96;
+	--pixelpair-radius: 2px;
+	--pixelpair-control-height: 40px;
+	--pixelpair-form-width: 960px;
+	--pixelpair-motion: 180ms;
+}

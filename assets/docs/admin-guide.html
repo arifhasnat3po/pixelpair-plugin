@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+	<meta charset="utf-8" /><meta
+		name="viewport"
+		content="width=device-width,initial-scale=1"
+	/><title>PixelPair guide</title
+	><style>
+		body {
+			font:
+				16px/1.65 system-ui,
+				sans-serif;
+			color: #1e1e1e;
+			background: #fff;
+			max-width: 760px;
+			margin: 48px auto;
+			padding: 0 24px;
+		}
+		h1 {
+			font-size: 28px;
+		}
+		h2 {
+			font-size: 20px;
+			margin-top: 40px;
+		}
+		p {
+			margin: 16px 0;
+		}
+		code {
+			background: #f0f0f0;
+			padding: 2px 4px;
+		}
+		a {
+			color: #135e96;
+		}
+	</style>
+	<main>
+		<h1>PixelPair guide</h1>
+		<p>
+			Open PixelPair in WordPress administration to configure your
+			connections and events.
+		</p>
+		<h2>Connect Meta</h2>
+		<p>
+			Run setup from Overview. Select Facebook and Instagram ads, paste
+			your Pixel ID or full Meta base code, then choose Save and continue.
+			Server delivery is optional and needs an access token. The
+			connection screen links to the official instructions for finding
+			both.
+		</p>
+		<p>
+			Check connection validates the saved browser configuration. With
+			server delivery and a test event code, it sends a real server test
+			and reports the platform response. Open your site and use Meta Pixel
+			Helper to verify browser delivery. Server acceptance alone does not
+			prove browser delivery or deduplication.
+		</p>
+		<h2>Consent and exclusions</h2>
+		<p>
+			Privacy contains role exclusions, IP addresses and bot filtering.
+			Enter one IPv4, IPv6 or CIDR range per line. Detected consent tools
+			must resolve the visitor’s choice before tracking begins. Without a
+			detected consent tool, marketing is allowed unless you enable Wait
+			for marketing consent.
+		</p>
+		<h2>Fast mode and Strict cache mode</h2>
+		<p>
+			Fast mode evaluates role and page-context exclusions during the PHP
+			page render. It assumes your page cache bypasses logged-in visitors.
+			Configuring any IP exclusions adds an uncached visitor eligibility
+			request.
+		</p>
+		<p>
+			Enable Strict cache mode in Settings → Advanced if your cache serves
+			shared pages to logged-in visitors. Strict mode always adds that
+			request, allowing the current visitor’s role, context and IP to be
+			checked. The trade-off is an additional request before tracking.
+			Purge your page cache after configuration changes.
+		</p>
+		<h2>Custom events and stores</h2>
+		<p>
+			In Events → Custom, choose New event, name it and select a trigger.
+			For a button click, enter its selector and select an event name for
+			each connection. Show what’s sent previews those mappings. Save and
+			turn on makes the event active.
+		</p>
+		<p>
+			Store appears when WooCommerce or Easy Digital Downloads is active.
+			Enable store tracking and choose product identifiers matching your
+			advertising catalog. The available store actions use the existing
+			consent and exclusion rules.
+		</p>
+		<h2>Activity and troubleshooting</h2>
+		<p>
+			Turn on server logging in Activity or Settings to record future
+			delivery results. Filter by connection or status and expand a row
+			for its redacted request and response. Logs do not retain matching
+			data or tokens. A failed connection check provides a response and a
+			next action.
+		</p>
+		<h2>Configuration backups</h2>
+		<p>
+			Settings → Import and export downloads saved preferences and custom
+			events. Tokens, executable scripts and permission grants are
+			excluded. Import replaces preferences and all custom events after
+			confirmation; it can enable tracking. Keep a backup before
+			importing.
+		</p>
+		<h2>AI access</h2>
+		<p>
+			Settings → Manage AI access shows availability and connection
+			details. Use a dedicated WordPress account with PixelPair permission
+			and an Application Password over HTTPS. Your MCP client must support
+			HTTP with Basic authentication or a compatible local proxy. Revoke
+			the Application Password to disconnect the client.
+		</p>
+	</main>
+</html>

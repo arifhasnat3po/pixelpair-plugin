@@ -1,0 +1,188 @@
+name: Quality
+
+on:
+    push:
+        branches: ['**']
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+defaults:
+    run:
+        working-directory: pixelpair
+
+jobs:
+    php:
+        name: PHP ${{ matrix.php }} / WP ${{ matrix.wp }} / multisite=${{ matrix.multisite }}
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                php: ['7.4', '8.1', '8.3']
+                wp: ['7.1.2', '7.0.6']
+                multisite: [false]
+                include:
+                    - { php: '8.2', wp: '7.1.2', multisite: false }
+                    - { php: '8.4', wp: '7.1.2', multisite: false }
+                    - { php: '7.4', wp: '6.2', multisite: false }
+                    - { php: '8.3', wp: '7.1.2', multisite: true }
+        steps:
+            - uses: actions/checkout@v4
+              with: { path: pixelpair }
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  tools: composer:v2
+                  coverage: none
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '24.21.0'
+                  cache: npm
+                  cache-dependency-path: pixelpair/package-lock.json
+            - run: composer install --no-interaction --prefer-dist
+            - run: npm ci
+            - run: npm run build
+            - run: npm run check:front-size
+            - run: npm run check:admin-size
+            - name: Check requested core/PHP pairing
+              env:
+                  MATRIX_PHP: ${{ matrix.php }}
+                  MATRIX_WP: ${{ matrix.wp }}
+                  MATRIX_MULTISITE: ${{ matrix.multisite }}
+              run: node scripts/configure-ci.mjs
+            - run: composer lint
+            - run: composer analyse
+            - run: npx --no-install wp-env start
+            - run: npx --no-install wp-env run tests-cli wp user create subscriber subscriber@example.test --role=subscriber --user_pass=password
+            - name: PHP integration tests
+              if: ${{ !matrix.multisite }}
+              run: composer test
+            - name: Multisite lifecycle tests
+              if: ${{ matrix.multisite }}
+              run: composer test -- --group multisite
+            - name: Reject PHP warnings from PixelPair
+              run: npx --no-install wp-env run tests-cli --env-cwd=wp-content/plugins/pixelpair php scripts/check-debug-log.php /var/www/html/wp-content/debug.log
+            - name: Capture environment logs
+              if: always()
+              run: npx --no-install wp-env logs tests --no-watch > wp-env-ci.log 2>&1
+            - uses: actions/upload-artifact@v4
+              if: failure()
+              with:
+                  name: php-${{ matrix.php }}-wp-${{ matrix.wp }}-${{ matrix.multisite }}-logs
+                  path: pixelpair/wp-env-ci.log
+            - if: always()
+              run: npx --no-install wp-env stop
+
+    browser:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with: { path: pixelpair }
+            - uses: shivammathur/setup-php@v2
+              with: { php-version: '8.3', tools: 'composer:v2', coverage: none }
+            - uses: actions/setup-node@v4
+              with:
+                  {
+                      node-version: '24.21.0',
+                      cache: npm,
+                      cache-dependency-path: pixelpair/package-lock.json,
+                  }
+            - run: composer install --no-interaction --prefer-dist
+            - run: npm ci
+            - run: npm run lint:js
+            - run: npm run brand && npm run check:brand
+            - run: npm run lint:css
+            - run: npm run format:check
+            - run: npm run test:unit -- --runInBand
+            - run: npm run build
+            - run: npm run check:front-size
+            - run: npx --no-install playwright install --with-deps chromium
+            - run: npx --no-install wp-env start
+            - run: npx --no-install wp-env run cli wp user create subscriber subscriber@example.test --role=subscriber --user_pass=password
+            - run: npm run test:e2e
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with: { name: browser-evidence, path: pixelpair/test-results/ }
+            - if: always()
+              run: npx --no-install wp-env stop
+
+    commerce:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with: { path: pixelpair }
+            - uses: shivammathur/setup-php@v2
+              with: { php-version: '8.3', tools: 'composer:v2', coverage: none }
+            - uses: actions/setup-node@v4
+              with:
+                  {
+                      node-version: '24.21.0',
+                      cache: npm,
+                      cache-dependency-path: pixelpair/package-lock.json,
+                  }
+            - run: composer install --no-interaction --prefer-dist
+            - run: npm ci
+            - run: npm run build
+            - name: Configure supported WooCommerce pairing
+              env:
+                  MATRIX_WP: '7.1.2'
+                  MATRIX_PHP: '8.3'
+                  MATRIX_COMMERCE: 'true'
+              run: node scripts/configure-ci.mjs
+            - run: npx --no-install wp-env start
+            - run: npx --no-install wp-env run tests-cli wp eval 'edd_install_component_database_tables();'
+            - run: npx --no-install wp-env run tests-cli wp user create subscriber subscriber@example.test --role=subscriber --user_pass=password
+            - run: composer test -- --group commerce,edd,mcp
+            - run: npx --no-install wp-env run cli wp user create subscriber subscriber@example.test --role=subscriber --user_pass=password
+            - name: Seed disposable commerce catalog
+              run: |
+                  mkdir -p .cache
+                  npx --no-install wp-env run cli --env-cwd=wp-content/plugins/pixelpair wp eval-file tests/fixtures/commerce.php > .cache/commerce-seed.log
+                  node -e 'const fs=require("fs");const text=fs.readFileSync(".cache/commerce-seed.log","utf8");const row=text.split(/\r?\n/).find(x=>x.startsWith("{\"simple\":"));if(!row)throw new Error(text);JSON.parse(row);fs.writeFileSync(".cache/commerce-fixture.json",row);'
+            - run: npx --no-install playwright install --with-deps chromium
+            - name: Classic and Blocks checkout tests
+              env:
+                  PIXELPAIR_TEST_STORES: '1'
+                  PIXELPAIR_COMMERCE_FIXTURE: '.cache/commerce-fixture.json'
+              run: npx --no-install playwright test tests/e2e/commerce.spec.js tests/e2e/ui-woocommerce.spec.js tests/e2e/ui-matrix.spec.js
+            - name: Seed EDD catalog
+              run: |
+                  npx --no-install wp-env run cli --env-cwd=wp-content/plugins/pixelpair wp eval-file tests/fixtures/edd.php > .cache/edd-seed.log
+                  node -e 'const fs=require("fs");const row=fs.readFileSync(".cache/edd-seed.log","utf8").split(/\r?\n/).find(x=>x.startsWith("{\"id\":"));if(!row)throw new Error("Missing EDD fixture");JSON.parse(row);fs.writeFileSync(".cache/edd-fixture.json",row);'
+            - name: EDD guest checkout
+              env:
+                  PIXELPAIR_TEST_STORES: '1'
+                  PIXELPAIR_EDD_FIXTURE: '.cache/edd-fixture.json'
+              run: npx --no-install playwright test tests/e2e/edd.spec.js tests/e2e/ui-edd.spec.js
+            - uses: actions/upload-artifact@v4
+              if: failure()
+              with: { name: commerce-failures, path: pixelpair/test-results/ }
+            - if: always()
+              run: npx --no-install wp-env stop
+
+    artifact:
+        needs: [php, browser, commerce]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with: { path: pixelpair }
+            - uses: shivammathur/setup-php@v2
+              with: { php-version: '8.3', tools: 'composer:v2', coverage: none }
+            - uses: actions/setup-node@v4
+              with:
+                  {
+                      node-version: '24.21.0',
+                      cache: npm,
+                      cache-dependency-path: pixelpair/package-lock.json,
+                  }
+            - run: npm ci
+            - run: npm run build
+            - run: npm run check:front-size
+            - run: npm run build:release
+            - run: npm run test:release
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: pixelpair-release
+                  path: pixelpair/releases/

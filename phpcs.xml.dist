@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="PixelPair">
+  <description>WordPress standards with PSR-4 file names.</description>
+  <file>src</file>
+  <file>pixelpair.php</file>
+  <file>uninstall.php</file>
+  <arg name="extensions" value="php"/>
+  <arg value="sp"/>
+  <config name="testVersion" value="7.4-"/>
+  <rule ref="WordPress">
+    <exclude name="WordPress.Files.FileName"/>
+  </rule>
+  <rule ref="WordPress.WP.I18n"><properties><property name="text_domain" type="array"><element value="pixelpair"/></property></properties></rule>
+  <rule ref="WordPress.WP.Capabilities"><properties><property name="custom_capabilities" type="array"><element value="manage_pixelpair"/><element value="edit_shop_orders"/><element value="edit_shop_payments"/></property></properties></rule>
+  <rule ref="PHPCompatibilityWP"/>
+</ruleset>

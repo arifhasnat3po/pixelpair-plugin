@@ -1,0 +1,9 @@
+{
+  "event_name": "PageView",
+  "event_time": 1700000000,
+  "event_id": "12345678-1234-4234-8234-123456789012",
+  "event_source_url": "https://example.com/public",
+  "action_source": "website",
+  "user_data": { "client_user_agent": "Fixture Browser" },
+  "custom_data": {}
+}
