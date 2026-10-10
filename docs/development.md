@@ -1,6 +1,6 @@
 # Developing PixelPair
 
-PixelPair includes browser/server connections, automatic and custom events, WooCommerce/EDD tracking, privileged scripts, configuration transfer and authenticated MCP access. See [CAPI operations](capi.md) and the [documentation index](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/README.md).
+PixelPair includes browser/server connections, automatic and custom events, WooCommerce/EDD tracking, configuration transfer and authenticated MCP access. See [CAPI operations](capi.md) and the [documentation index](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/README.md).
 
 ## Setup and checks
 
@@ -88,7 +88,7 @@ Version 5 adds the commerce identity table and disabled WooCommerce/EDD settings
 
 ## Integrations and configuration transfer
 
-See [integrations](integrations.md), [MCP](mcp.md) and [release packaging](release.md) for store, script and AI integration contracts and release packaging. Configuration transfer replaces settings and custom rules, preserves credentials/scripts/grants, validates all input first, and uses a database transaction plus the existing event mutation lock. Import requires transactional tables.
+See [integrations](integrations.md), [MCP](mcp.md) and [release packaging](release.md) for store and AI integration contracts and release packaging. Configuration transfer replaces settings and custom rules, preserves credentials/grants, validates all input first, and uses a database transaction plus the existing event mutation lock. Import requires transactional tables.
 
 ## Identity migration
 

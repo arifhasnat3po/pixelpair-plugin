@@ -1,94 +1,165 @@
-=== PixelPair – Meta Pixel, Conversions API, GA4 & TikTok for WooCommerce ===
-Contributors: [WPORG_USERNAME]
-// TODO: Replace with Arif Hasnat's verified WordPress.org username before submission.
-Tags: analytics, pixel, conversions
+=== Arif PixelPair – Marketing Tracking ===
+Contributors: arifhasnat
+Tags: analytics, meta pixel, conversions api, woocommerce, tiktok
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.9.0
+Stable tag: 0.9.2
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Configure pixels, conversion APIs, WooCommerce and EDD tracking with consent controls.
+Connect Meta Pixel, Google Analytics and TikTok, with server events, WooCommerce tracking, custom events and consent controls.
 
 == Description ==
 
-PixelPair provides Meta Pixel and CAPI, TikTok Pixel and Events API, GA4, GTM, automatic events, a custom event builder, WooCommerce and EDD tracking. It includes shared browser/server event IDs, category-specific consent, role/IP/bot exclusions, encrypted credentials, optional advanced matching, retries and redacted logs. Tracking starts disabled. WooCommerce uses verified product and cart values, paid receipt checks, HPOS-safe attribution and persisted purchase claims. Overview provides connection status and a skippable setup wizard. Privileged Head & Footer scripts, secret-free configuration transfer, privacy tools and optional authenticated MCP access are included. No noscript request bypasses consent.
+Arif PixelPair brings your WordPress tracking into one workspace. Connect Meta, Google Analytics, Google Tag Manager and TikTok, choose what to track, and inspect server delivery results from your dashboard.
 
-PixelPair has no telemetry, ads, upsells, or remote services of its own. When enabled and permitted, it loads Meta's official https://connect.facebook.net/en_US/fbevents.js script and sends events to Meta. CAPI uses https://graph.facebook.com/v26.0/{pixel_id}/events. Meta may receive the page/referrer URL, IP, user agent, browser/click identifiers and hashed matching fields. Consented collection creates first-party _fbp, _fbc (only with fbclid), and random visitor cookies for 90 days. Advanced matching can use hashed logged-in profile details. See docs/capi.md for data handling, encryption and queue/log retention. Meta terms: https://www.facebook.com/legal/technology_terms and privacy information: https://www.facebook.com/privacy/policy/ .
+A skippable setup wizard helps you choose connections, paste IDs, check configuration and exclude your own visits. Paste a Meta or Google code snippet and PixelPair extracts the supported ID for you.
 
-When enabled and consented, GA4 and GTM load scripts from https://www.googletagmanager.com/ or the owner's configured HTTPS tagging domain. Google Analytics receives page/event data and consent signals; GTM runs the owner's published container. Google terms: https://marketingplatform.google.com/about/analytics/terms/us/ and privacy: https://policies.google.com/privacy . Review every tag in your container. PixelPair uses basic consent mode: no Google loader before the required grant.
+Tracking starts disabled. You choose which connections and events to enable.
 
-Automatic/custom events may include page titles, post IDs/types, terms, search strings, form IDs/titles, link URLs, scroll/time values and session attribution. Disable unwanted context fields in Events. Form-field matching is off by default; when explicitly enabled, email/phone are hashed locally for consented Meta CAPI. Session storage holds consented attribution/counts and once-per-session flags. Successful login/signup/comment flags expire after ten minutes. See docs/events.md and docs/google-consent.md in the source package.
+Arif PixelPair is independently developed by Arif Hasnat. It integrates with Meta, Google Analytics, Google Tag Manager, TikTok, WooCommerce and Easy Digital Downloads. It is not affiliated with or endorsed by those services or their owners.
 
+= Connections =
 
-When enabled and marketing consent allows, TikTok loads https://analytics.tiktok.com/i18n/pixel/events.js and sends browser events; Events API calls use https://business-api.tiktok.com/open_api/v1.3/event/track/. TikTok can receive page/product/event details, totals, IP, user agent, _ttp/ttclid identifiers and optionally hashed contact data. PixelPair keeps a consented ttclid cookie for 30 days; the TikTok SDK controls its own _ttp cookie. Terms: https://ads.tiktok.com/i18n/official/policy/business-products-terms and privacy: https://www.tiktok.com/legal/page/row/privacy-policy/en . Review your vendor configuration and obligations.
+* Meta Pixel and Conversions API.
+* Google Analytics 4 and Google Tag Manager.
+* TikTok Pixel and Events API.
+* Shared event IDs for supported browser/server events.
+* Encrypted credentials, retries and redacted logs.
 
-Optional AI access requires WordPress 6.9+ and the official WordPress MCP Adapter (tested 0.6.1). External clients authenticate with WordPress Application Passwords over HTTPS; every tool checks manage_pixelpair and the site ID. No external AI service is contacted by PixelPair. See docs/mcp.md.
+= Events and stores =
+
+* Automatic event controls for pages, search, forms, accounts and engagement.
+* Custom rules for button clicks, page visits, scroll depth and other supported triggers.
+* Per-platform event mappings and payload previews.
+* WooCommerce product, cart, checkout and paid purchase tracking, including supported Blocks flows and HPOS.
+* Easy Digital Downloads tracking for supported download, cart, checkout and purchase flows.
+* Configurable product identifiers and purchase values.
+
+WooCommerce and Easy Digital Downloads are optional. Their own WordPress and PHP requirements also apply. See the store guide for supported combinations and delivery limits.
+
+= Privacy and administration =
+
+* Consent integrations and a setting to wait for explicit marketing consent.
+* Role, IP address, CIDR and bot exclusions.
+* Fast cache mode and optional strict visitor eligibility checks.
+* Configuration import and export that never includes secrets.
+* Per-site settings on WordPress multisite.
+* Optional authenticated access for external AI tools through the WordPress MCP Adapter.
+
+PixelPair has no telemetry, advertisements or upsells. Enabled tracking connections communicate with the external services described below. It does not guarantee platform acceptance, attribution accuracy or compliance with privacy laws.
+
+[Getting started](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/guides/getting-started.md) | [Documentation](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/README.md) | [Screenshots](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/screenshots.md)
+
+= Consent and personal data =
+
+When no consent tool is detected, marketing consent is granted by default. Enable "Wait for marketing consent" and configure a supported consent integration if you need visitors to opt in. When a consent tool is detected, unresolved or denied consent blocks the relevant tracking.
+
+Depending on enabled settings, event data can include page URLs and titles, referrers, search strings, product identifiers, cart or order totals, IP addresses, user agents, browser identifiers and attribution. Optional advanced matching uses hashed contact fields. Hashing does not make contact data anonymous.
+
+Consented collection uses first-party browser, click and visitor identifiers. PixelPair's Meta and visitor cookies expire after 90 days, and its TikTok click identifier after 30 days. Vendor scripts manage their own cookies. Session storage can hold attribution and event counters. See the bundled documentation for queue/log retention and deletion controls.
+
+= External services =
+
+**Meta**
+
+When enabled and marketing consent allows, the browser loads the official Meta Pixel script from connect.facebook.net. Server events are sent to graph.facebook.com using your Pixel ID and access token. Meta can receive event names, page and product details, values, IP addresses, user agents, browser/click identifiers and optional hashed matching fields. Requests occur for permitted tracked actions, authorized connection tests and queued retries.
+
+[Meta terms](https://www.facebook.com/legal/technology_terms) | [Meta privacy policy](https://www.facebook.com/privacy/policy/)
+
+**Google Analytics and Google Tag Manager**
+
+When enabled and the required consent is granted, Google scripts load from googletagmanager.com or your configured HTTPS tagging domain. Google Analytics receives page/event data and consent signals. Tag Manager executes your published container, which can contact additional services according to the tags you configure. Review those tags separately. PixelPair uses basic consent mode and does not load Google scripts before the required grant.
+
+[Google Analytics terms](https://marketingplatform.google.com/about/analytics/terms/us/) | [Google Tag Manager terms](https://www.google.com/analytics/tag-manager/use-policy/) | [Google privacy policy](https://policies.google.com/privacy)
+
+**TikTok**
+
+When enabled and marketing consent allows, the browser loads the TikTok Pixel script from analytics.tiktok.com. Server events are sent to business-api.tiktok.com using your credentials. TikTok can receive page, product and event details, values, IP addresses, user agents, browser/click identifiers and optional hashed contact fields. Requests occur for permitted tracked actions, authorized connection tests and queued retries.
+
+[TikTok business terms](https://ads.tiktok.com/i18n/official/policy/business-products-terms) | [TikTok privacy policy](https://www.tiktok.com/legal/page/row/privacy-policy/en)
+
+**Optional AI access**
+
+PixelPair does not contact an AI provider itself. External clients connect to your site using WordPress Application Passwords over HTTPS and require the manage_pixelpair capability. Optional AI access requires WordPress 6.9 or later and the official WordPress MCP Adapter.
 
 == Installation ==
 
-1. Upload a built PixelPair package to your WordPress plugins directory.
-2. Activate PixelPair. Administrators receive the manage_pixelpair capability.
-3. Open PixelPair and use the setup wizard to choose platforms and enter IDs.
-4. Configure consent and exclusions as needed, then purge your page cache.
+1. Download the built pixelpair.zip release.
+2. In WordPress, open Plugins > Add New > Upload Plugin.
+3. Select pixelpair.zip, choose Install Now, then activate PixelPair.
+4. Open PixelPair and follow the setup wizard.
+5. Choose your connections, paste IDs and add server credentials if needed.
+6. Configure Privacy, enable your desired tracking and clear your page cache.
+7. Visit your site and verify events with the platform's tools.
 
-For source checkouts, run composer install, npm ci, and npm run build first. See docs/development.md.
-
-To update an existing installation, upload a built release ZIP under Plugins > Add New > Upload Plugin and choose to replace the current version. Then open Installed Plugins and confirm the new version. Replacement keeps your settings; deleting the plugin can remove them. Composer is not required on your WordPress host.
+To update, upload the newer built ZIP and choose to replace the installed version. Replacement preserves settings. Composer and Node.js are not required on your WordPress host.
 
 == Frequently Asked Questions ==
 
-= Does this build track visitors? =
+= Do I need WooCommerce? =
 
-Only after you enable a valid platform and eligibility plus its required consent categories allow it. With no detected consent tool, marketing is allowed by default. Enable "Wait for marketing consent" to require an explicit consent integration. A detected consent tool must resolve its decision; unresolved or denied means no tracking. PixelPair shows a dismissible consent-plugin recommendation for EU/UK traffic.
+No. Page, automatic and custom event tracking work without a store plugin. Store controls appear when WooCommerce or Easy Digital Downloads is active.
 
-= Which cache mode should I use? =
+= Does tracking start when I activate PixelPair? =
 
-Fast mode checks roles and page context during PHP rendering. Use it when your cache bypasses logged-in visitors. It makes an uncached eligibility request only when IP exclusions are configured. Strict cache mode checks the current visitor on every eligible page; enable it if your cache shares pages with logged-in visitors. All modes require a cache purge after settings or consent-plugin changes.
+No. Enable a valid connection first. Events also depend on eligibility checks and the connection's required consent categories. With no detected consent tool, marketing is granted by default unless you enable "Wait for marketing consent".
 
 = Which consent tools are supported? =
 
-WP Consent API, Cookiebot, Complianz, CookieYes, Borlabs Cookie v3 and Real Cookie Banner are supported through documented APIs. Configure the matching service identifiers for Borlabs and Real Cookie Banner. Recognized tools without a resolved decision stay blocked. API fixtures are tested; live plugin-version checks remain pending.
+WP Consent API, Cookiebot, Complianz, CookieYes, Borlabs Cookie v3 and Real Cookie Banner have adapters. Borlabs and Real Cookie Banner require the matching service identifiers. Verify the integration with your installed consent-plugin version before using it on a live site.
 
-= Can other plugins send duplicate pixels? =
+= How do I know tracking works? =
 
-Yes. PixelPair sends one PageView per permitted document. Other plugins can independently initialize Meta or send events; configure only one tracking integration for each pixel.
+Overview shows connection configuration and warnings. Check connection reports the available test result. Activity shows enabled server diagnostics with redacted details. Verify browser events and server acceptance in Meta Events Manager, Google Analytics DebugView or TikTok Events Manager. A configured connection alone does not prove receipt.
 
-= What happens when I deactivate or delete it? =
+= Does PixelPair work with caching? =
 
-Deactivation stops PixelPair jobs and keeps its data. Deletion removes settings and capability unless "Keep settings on uninstall" is enabled. Gate rate-limit counters contain only salted address hashes and expire after one minute.
+Fast mode checks roles and page context during page rendering and requests uncached eligibility only when IP exclusions are configured. Use Strict cache mode if your cache serves shared pages to logged-in visitors. Clear the page cache after changing tracking settings or consent integrations.
 
-= Is multisite supported? =
+= Are access tokens included in exports? =
 
-Each site has separate options and capabilities. Network activation initializes existing sites in batches and initializes new sites while network-active. Uninstall respects retention independently for each site.
+No. Configuration exports exclude secrets. Enter credentials separately after importing on another site.
+
+= What happens when I deactivate or delete the plugin? =
+
+Deactivation stops PixelPair jobs and keeps its data. Deletion removes its data unless "Keep settings on uninstall" is enabled. Multisite retention is handled separately for each site.
+
+== Screenshots ==
+
+1. Overview with connection statuses and next actions.
+2. Setup wizard for choosing tracking connections.
+3. Meta connection settings with optional server events.
+4. Automatic event controls grouped by purpose.
+5. Custom event builder with trigger rules and platform mappings.
+6. WooCommerce event and value settings.
+7. Privacy settings for consent and tracking exclusions.
+8. Activity with redacted server diagnostics.
+
+Screenshots use demonstration data and do not represent live account results.
 
 == Changelog ==
 
-= 0.9.0 =
-* Add WooCommerce/EDD purchase tracking, TikTok browser/server delivery, privileged scripts, onboarding, configuration transfer, privacy tools and authenticated MCP management.
-* Redesign the admin with focused connection screens, sentence-style event rules, shared accessible controls, unsaved-change protection and a skippable setup wizard.
-* WooCommerce classic/Blocks product, cart, checkout and paid purchase tracking with HPOS-safe attribution, configurable IDs/values and persistent purchase deduplication.
-* Store controls, consented cart parameter and optional server purchase safety net. See docs/commerce.md for supported pairings and delivery limits.
+= 0.9.2 =
+* Clarify the independent project name and third-party service integrations.
+* Limit consent recommendations to PixelPair screens and hide resolved recommendations.
+* Limit migration errors to relevant management screens.
+* Update documentation, translation source and directory graphics.
 
-= 0.5.1 =
-* Restore plugin startup when the generated Composer loader is missing or unreadable by loading PixelPair's own classes directly.
+= 0.9.1 =
+* Remove arbitrary script insertion and execution for the WordPress.org distribution.
+* Add WooCommerce and Easy Digital Downloads tracking and TikTok browser/server events.
+* Include the finalized WordPress.org readme and automatic translation loading.
+* Add setup, secret-free configuration transfer, privacy tools and optional authenticated MCP access.
+* Introduce focused connection screens, a sentence-style event builder and unsaved-change protection.
+* Add store controls and HPOS-safe purchase attribution with persistent purchase claims.
 
-= 0.5.0 =
-* Automatic event controls, form success adapters, safe custom rules, per-platform mappings and contextual parameters.
+== Upgrade Notice ==
 
-= 0.4.0 =
-* GA4, GTM, container starter export, Google Consent Mode v2 and category-specific CMP adapters.
-
-= 0.3.0 =
-* Encrypted Meta CAPI delivery, advanced matching, retries, diagnostics and shared event IDs.
-
-= 0.2.0 =
-* Meta browser PageView tracking with browser UUIDs, authenticated settings, consent controls, exclusions, and strict cache mode.
-
-= 0.1.0 =
-* Initial development scaffold, admin shell, lifecycle tests, and quality pipeline.
+= 0.9.2 =
+Use the built ZIP to update. Review consent settings, clear page caches and verify your enabled connections after upgrading.
 
 == Credits ==
 
-PixelPair is built by Arif Hasnat.
+Arif PixelPair is built by Arif Hasnat.

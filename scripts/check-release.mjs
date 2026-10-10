@@ -17,6 +17,12 @@ for ( const entry of entries ) {
 		),
 		entry.entryName
 	);
+	assert.ok(
+		! /(?:^|\/)(?:[^/]*(?:PROMPT|PLAN)[^/]*\.md|STATUS\.md|DECISIONS\.md|AUTOPILOT\.md|AGENTS\.md|reports)(?:\/|$)/i.test(
+			entry.entryName
+		),
+		entry.entryName
+	);
 	assert.equal(
 		Math.floor( entry.attr / 65536 ) % 512,
 		entry.isDirectory ? 0o755 : 0o644,
@@ -28,7 +34,6 @@ for ( const name of [
 	'pixelpair.php',
 	'build/admin.js',
 	'build/tracker.js',
-	'build/scripts.js',
 	'languages/pixelpair.pot',
 	'assets/images/pixelpair-logo.svg',
 	'assets/images/pixelpair-mark-mono.svg',
@@ -37,9 +42,25 @@ for ( const name of [
 ] ) {
 	assert.ok( zip.getEntry( 'pixelpair/' + name ), name );
 }
+for ( const entry of entries ) {
+	assert.ok(
+		! /(?:src\/Scripts\/|screens\/Scripts\.js|front\/scripts(?:-entry)?\.js|build\/scripts\.)/.test(
+			entry.entryName
+		),
+		entry.entryName
+	);
+}
 const installed = JSON.parse(
 	zip.readAsText( 'pixelpair/vendor/composer/installed.json' )
 );
+const header = zip.readAsText( 'pixelpair/pixelpair.php' );
+const readme = zip.readAsText( 'pixelpair/readme.txt' );
+const displayName = 'Arif PixelPair – Marketing Tracking';
+assert.ok( header.includes( `Plugin Name: ${ displayName }` ) );
+assert.ok( readme.startsWith( `=== ${ displayName } ===` ) );
+assert.ok( header.includes( 'Text Domain: pixelpair' ) );
+assert.ok( readme.includes( 'Contributors: arifhasnat' ) );
+assert.ok( readme.includes( 'not affiliated with or endorsed' ) );
 assert.ok(
 	zip
 		.readAsText( 'pixelpair/vendor/composer/autoload_classmap.php' )

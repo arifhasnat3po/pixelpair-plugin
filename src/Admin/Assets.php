@@ -45,7 +45,6 @@ final class Assets {
 					'siteUrl'        => home_url( '/' ),
 					'logoUrl'        => plugins_url( 'assets/images/pixelpair-logo.svg', PIXELPAIR_FILE ),
 					'version'        => PIXELPAIR_VERSION,
-					'canScripts'     => \PixelPair\Scripts\Repository::allowed(),
 					'canPermissions' => current_user_can( 'manage_options' ),
 					'nonce'          => wp_create_nonce( 'wp_rest' ),
 					'roles'          => $roles,

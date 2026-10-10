@@ -30,9 +30,6 @@ final class Plugin {
 		add_action( 'rest_api_init', array( new Admin\PermissionsController(), 'register_routes' ) );
 		( new Integrations\WooCommerce\Integration() )->register();
 		( new Integrations\EDD\Integration() )->register();
-		( new Scripts\Renderer() )->register();
-		( new Scripts\MetaBox() )->register();
-		add_action( 'rest_api_init', array( new Scripts\Controller(), 'register_routes' ) );
 		add_action( 'rest_api_init', array( new Commerce\Controller(), 'register_routes' ) );
 		( new Events\Automatic\Flags() )->register();
 		add_action( 'rest_api_init', array( new Events\Custom\Controller(), 'register_routes' ) );
@@ -60,11 +57,5 @@ final class Plugin {
 		add_action( 'admin_enqueue_scripts', array( new Assets(), 'enqueue' ) );
 		add_action( 'wp_initialize_site', array( Activation::class, 'on_created_site' ), 200 );
 		add_action( 'pixelpair_initialize_network', array( Activation::class, 'initialize_network' ), 10, 2 );
-		add_action(
-			'init',
-			static function (): void {
-				load_plugin_textdomain( 'pixelpair', false, dirname( plugin_basename( PIXELPAIR_FILE ) ) . '/languages' );
-			}
-		);
 	}
 }

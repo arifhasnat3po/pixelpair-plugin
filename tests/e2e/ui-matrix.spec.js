@@ -15,7 +15,6 @@ const routes = [
 	'events/data',
 	'events/custom',
 	'events/custom/new',
-	'scripts',
 	'privacy',
 	'activity',
 	'settings',

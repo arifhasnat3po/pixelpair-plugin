@@ -1,8 +1,10 @@
 <p align="left"><img src="brand/pixelpair-logo.svg" width="240" alt="PixelPair" /></p>
 
-# PixelPair
+# Arif PixelPair – Marketing Tracking
 
-**Meta Pixel, Conversions API, Google Analytics and TikTok for WordPress and WooCommerce.**
+Independent marketing tracking integrations for WordPress.
+
+Arif PixelPair is independently developed by Arif Hasnat. It integrates with Meta, Google Analytics, Google Tag Manager, TikTok, WooCommerce and Easy Digital Downloads. It is not affiliated with or endorsed by those services or their owners.
 
 Connect your advertising and analytics accounts, choose the events to track, and inspect server delivery from WordPress. PixelPair includes a skippable setup wizard, consent controls, a custom event builder, and WooCommerce and Easy Digital Downloads support.
 
@@ -35,7 +37,7 @@ Use the built **pixelpair.zip** release asset. GitHub's **Source code (zip)** is
 | Stores         | WooCommerce classic and Blocks flows, HPOS, EDD, product/cart/checkout and paid-purchase events |
 | Privacy        | Consent integrations, role/IP/bot exclusions, fast and strict cache modes                       |
 | Diagnostics    | Connection checks, bounded server retries, optional redacted delivery logs                      |
-| Administration | Privileged scripts, secret-free configuration import/export, per-site multisite settings        |
+| Administration | Secret-free configuration import/export, per-site multisite settings                            |
 | AI access      | Optional authenticated MCP tools for inspecting configuration and managing settings/events      |
 
 Tracking starts disabled. With no detected consent tool, marketing is allowed by default once you enable a connection. A detected tool must resolve the visitor's decision before tracking starts. Enable **Wait for marketing consent** in Privacy when you require an explicit decision. See [privacy and settings](docs/guides/privacy-and-settings.md).
@@ -61,7 +63,7 @@ Optional extensions have their own requirements. See [compatibility and delivery
 - [Events](docs/guides/events.md) — automatic tracking and a button-click example.
 - [Store tracking](docs/guides/stores.md) — WooCommerce and EDD settings.
 - [Privacy and settings](docs/guides/privacy-and-settings.md) — consent, exclusions, caching and backups.
-- [Activity and scripts](docs/guides/activity-and-scripts.md) — inspect delivery and manage privileged code.
+- [Activity](docs/guides/activity.md) — inspect redacted server delivery attempts.
 - [AI access](docs/guides/ai-access.md) — connect an authenticated external MCP client.
 - [Troubleshooting](docs/guides/troubleshooting.md) — installation, missing events and connection errors.
 - [Screenshot gallery](docs/screenshots.md) — all current screens, including the narrower layout.

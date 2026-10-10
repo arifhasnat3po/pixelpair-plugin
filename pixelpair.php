@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: PixelPair – Meta Pixel, Conversions API, GA4 & TikTok for WooCommerce
+ * Plugin Name: Arif PixelPair – Marketing Tracking
  * Plugin URI: https://github.com/arifhasnat3po/pixelpair-plugin
  * Description: Configure marketing pixels and conversion APIs from WordPress.
- * Version: 0.9.0
+ * Version: 0.9.2
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * Author: Arif Hasnat
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PIXELPAIR_VERSION', '0.9.0' );
+define( 'PIXELPAIR_VERSION', '0.9.2' );
 define( 'PIXELPAIR_FILE', __FILE__ );
 define( 'PIXELPAIR_PATH', __DIR__ . '/' );
 

@@ -15,12 +15,17 @@ use PixelPair\Settings\Repository;
 final class ConsentNotice {
 	/** Render a notice only for authorized site owners without a detected CMP. */
 	public function render(): void {
-		if ( ! current_user_can( 'manage_pixelpair' ) || ( new Repository() )->get()['consent_notice_dismissed'] || ( new ConsentManager() )->tools() ) {
+		$screen = get_current_screen();
+		if ( ! $screen || 'toplevel_page_pixelpair' !== $screen->id || ! current_user_can( 'manage_pixelpair' ) ) {
+			return;
+		}
+		$settings = ( new Repository() )->get();
+		if ( $settings['consent_notice_dismissed'] || $settings['deny_until_consent'] || ( new ConsentManager() )->tools() || ( ! $settings['meta_enabled'] && ! $settings['tiktok_enabled'] && ! $settings['gtm_enabled'] ) ) {
 			return;
 		}
 		?>
-		<div class="notice notice-info">
-			<p><?php esc_html_e( 'PixelPair: no consent tool was detected. Marketing tracking is allowed by default when your pixel is enabled. For EU/UK traffic, we recommend a consent plugin. You can also turn on “Deny marketing until consent” in PixelPair.', 'pixelpair' ); ?></p>
+		<div class="notice notice-info pixelpair-consent-notice">
+			<p><?php esc_html_e( 'No consent tool was detected. For EU/UK traffic, configure a consent plugin and review “Wait for marketing consent” in Privacy.', 'pixelpair' ); ?></p>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="pixelpair_dismiss_consent">
 				<?php wp_nonce_field( 'pixelpair_dismiss_consent' ); ?>

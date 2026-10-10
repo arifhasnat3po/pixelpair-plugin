@@ -27,7 +27,6 @@ const screens = {
 	connections: lazy( () => import( './screens/Connections' ) ),
 	events: lazy( () => import( './screens/Events' ) ),
 	store: lazy( () => import( './screens/Commerce' ) ),
-	scripts: lazy( () => import( './screens/Scripts' ) ),
 	privacy: lazy( () => import( './screens/Privacy' ) ),
 	activity: lazy( () => import( './screens/Logs' ) ),
 	settings: lazy( () => import( './screens/Settings' ) ),
@@ -182,9 +181,6 @@ export default function App() {
 		window.pixelpairAdmin?.stores?.edd
 	) {
 		nav.push( [ 'store', __( 'Store', 'pixelpair' ) ] );
-	}
-	if ( window.pixelpairAdmin?.canScripts ) {
-		nav.push( [ 'scripts', __( 'Scripts', 'pixelpair' ) ] );
 	}
 	nav.push(
 		[ 'privacy', __( 'Privacy', 'pixelpair' ) ],

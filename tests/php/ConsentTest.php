@@ -23,10 +23,15 @@ final class ConsentTest extends LifecycleTestCase {
 	}
 	public function test_notice_only_appears_to_authorized_admin_without_tool_and_dismissal_checks_nonce(): void {
 		\PixelPair\Activation::activate(false);wp_set_current_user(get_users(array('role'=>'administrator','number'=>1))[0]->ID);
+		require_once ABSPATH . 'wp-admin/includes/class-wp-screen.php';
+		require_once ABSPATH . 'wp-admin/includes/screen.php';
+		set_current_screen('toplevel_page_pixelpair');
+		(new Repository())->update(array('meta_enabled'=>true,'meta_pixel_id'=>'123456789012345'));
 		$notice=new \PixelPair\Admin\ConsentNotice();ob_start();$notice->render();$html=ob_get_clean();$this->assertStringContainsString('EU/UK',$html);
 		$this->assertInstanceOf(WP_Error::class,$notice->dismiss('invalid'));
 		$this->assertTrue($notice->dismiss(wp_create_nonce('pixelpair_dismiss_consent')));
 		ob_start();$notice->render();$this->assertSame('',ob_get_clean());
 		wp_set_current_user(0);$this->assertInstanceOf(WP_Error::class,$notice->dismiss(wp_create_nonce('pixelpair_dismiss_consent')));
+		set_current_screen('front');
 	}
 }

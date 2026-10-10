@@ -96,13 +96,6 @@ These screenshots show a disposable demonstration site at 1280 pixels, plus a 78
 </details>
 
 <details>
-<summary>Scripts</summary>
-
-![Scripts](images/scripts.png)
-
-</details>
-
-<details>
 <summary>Privacy</summary>
 
 ![Privacy](images/privacy.png)

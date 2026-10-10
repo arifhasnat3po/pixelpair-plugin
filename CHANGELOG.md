@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.2 — Focused admin notices and independent identity
+
+- Use the display name Arif PixelPair – Marketing Tracking; keep the pixelpair slug and existing settings.
+- Scope consent recommendations to the plugin screen, retain secure dismissal and hide resolved recommendations.
+- Scope migration errors to relevant management screens.
+- Update directory banners, service disclosures, translations and documentation.
+
+## 0.9.1 — WordPress.org submission build
+
+- Remove the arbitrary header, footer and receipt script editor and executor.
+- Keep cleanup of legacy script data without executing it.
+- Include complete service/privacy disclosures and automatic translation loading.
+
 ## 0.9.0 — Initial public release
 
 - Meta Pixel and Conversions API, Google Analytics, Tag Manager, and TikTok Pixel/Events API connections.

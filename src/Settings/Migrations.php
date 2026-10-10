@@ -50,7 +50,8 @@ final class Migrations {
 
 	/** Explain a recoverable table collision without exposing stored data. */
 	public static function notice(): void {
-		if ( current_user_can( 'manage_options' ) ) {
+		$screen = get_current_screen();
+		if ( $screen && in_array( $screen->id, array( 'plugins', 'toplevel_page_pixelpair' ), true ) && current_user_can( 'manage_options' ) ) {
 			echo '<div class="notice notice-error"><p>' . esc_html__( 'PixelPair could not finish its data migration. Both old and new tracking tables may exist, or the database rejected a write. Tracking is paused. Ask your administrator to preserve both copies, resolve the database conflict, then reload this page to retry.', 'pixelpair' ) . '</p></div>';
 		}
 	}

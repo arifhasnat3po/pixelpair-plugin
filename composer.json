@@ -1,6 +1,6 @@
 {
 	"name": "pixelpair/pixelpair",
-	"description": "An original WordPress pixel and conversion API manager.",
+	"description": "Arif PixelPair marketing tracking with independent third-party integrations.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"require": {

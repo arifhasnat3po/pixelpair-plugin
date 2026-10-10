@@ -5,20 +5,6 @@ use PixelPair\Integrations\WooCommerce\{Data,Integration};
 use PixelPair\Settings\Repository;
 /** @group commerce */
 final class WooCommerceTest extends LifecycleTestCase {
-	public function test_receipt_script_requires_paid_owner_and_current_consent(): void {
-		$o=wc_create_order();$this->orders[]=$o;$o->set_total(12.5);$o->save();
-		$s=\PixelPair\Scripts\Repository::defaults();$s['receipt']['code']='window.receipt={order_id};';update_option('pixelpair_scripts',$s);
-		$request=new WP_REST_Request('POST');$request->set_header('origin',home_url());
-		$body=array('url'=>home_url('/checkout/order-received/'.$o->get_id().'/?key='.$o->get_order_key()),'category'=>'marketing','consent'=>array('granted'=>true,'source'=>'integration'));
-		$request->set_body(wp_json_encode($body));$controller=new \PixelPair\Scripts\Controller();
-		try {
-			$this->assertSame(403,$controller->receipt($request)->get_status());
-			$o->set_status('processing');$o->save();$response=$controller->receipt($request);$this->assertSame(200,$response->get_status());$this->assertSame('window.receipt='.$o->get_id().';',$response->get_data()['code']);
-			$o->set_customer_id(999999);$o->save();$this->assertSame(403,$controller->receipt($request)->get_status());
-			$o->set_customer_id(0);$o->save();$body['consent']['granted']=false;$request->set_body(wp_json_encode($body));$this->assertSame(403,$controller->receipt($request)->get_status());
-			$request->set_header('origin','https://evil.example');$this->assertSame(403,$controller->receipt($request)->get_status());
-		} finally {delete_option('pixelpair_scripts');}
-	}
 	private $products=array(); private $orders=array();
 	protected function setUp(): void {
 		parent::setUp();$this->assertTrue(class_exists('WooCommerce'),'Run this group on the documented WooCommerce fixture.');

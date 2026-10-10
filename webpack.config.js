@@ -6,6 +6,5 @@ module.exports = {
 	entry: {
 		admin: path.resolve( __dirname, 'assets/src/admin/index.js' ),
 		tracker: path.resolve( __dirname, 'assets/src/front/index.js' ),
-		scripts: path.resolve( __dirname, 'assets/src/front/scripts-entry.js' ),
 	},
 };

@@ -7,10 +7,6 @@ use PixelPair\Uninstall;
 
 /** @group multisite */
 final class MultisiteTest extends LifecycleTestCase {
-	public function test_site_administrator_cannot_save_raw_scripts(): void {
-		$id=wp_create_user('script-site-'.wp_generate_password(8,false),'password');$user=new WP_User($id);$user->set_role('administrator');$user->add_cap('manage_pixelpair');wp_set_current_user($id);
-		try {$this->assertFalse(is_super_admin($id));$this->assertFalse(\PixelPair\Scripts\Repository::allowed());$this->assertInstanceOf(WP_Error::class,(new \PixelPair\Scripts\Repository())->save(\PixelPair\Scripts\Repository::defaults()));} finally {require_once ABSPATH.'wp-admin/includes/ms.php';wpmu_delete_user($id);}
-	}
 	public function test_deferred_batches_reactivation_and_network_deactivation(): void {
 		$this->assertTrue( is_multisite() );
 		$original = get_current_blog_id();

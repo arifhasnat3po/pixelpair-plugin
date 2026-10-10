@@ -98,8 +98,6 @@ for ( const name of [
 	'build/style-admin.css',
 	'build/tracker.js',
 	'build/tracker.asset.php',
-	'build/scripts.js',
-	'build/scripts.asset.php',
 	'languages/pixelpair.pot',
 	'vendor/autoload.php',
 ] ) {

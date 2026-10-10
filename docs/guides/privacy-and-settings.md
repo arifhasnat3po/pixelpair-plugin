@@ -34,6 +34,6 @@ Open **Settings → Import and export** to download saved preferences and custom
 
 ![Configuration export and import preview](../images/settings-transfer.png)
 
-Import validates the document, shows a preview and requires confirmation. It replaces preferences and all custom events, and can enable tracking. Existing secrets, scripts and grants are preserved. If a follow-up reload fails, use the offered retry before editing settings; stale forms stay locked to avoid overwriting the import.
+Import validates the document, shows a preview and requires confirmation. It replaces preferences and all custom events, and can enable tracking. Existing secrets and grants are preserved. If a follow-up reload fails, use the offered retry before editing settings; stale forms stay locked to avoid overwriting the import.
 
 Do not publish a site's exported configuration without reviewing it: public IDs, URL rules and other business configuration may still be present even though tokens are excluded.
