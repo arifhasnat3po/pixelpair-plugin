@@ -26,7 +26,7 @@ npm run test:e2e
 
 The development site is http://localhost:8888 and the disposable test site is http://localhost:8889. Default fixture credentials are admin / password and subscriber / password. Never run tests against an existing site: they change settings and roles and create/delete network sites.
 
-WordPress is pinned to 7.1.2. CI also covers 7.0.6 and the 6.2 floor. The compatibility preflight reports unavailable metadata and unsupported PHP pairings explicitly, with no allow-failure entry. The PHP suite uses real installed WordPress APIs. Run the separate multisite job with `composer test -- --group multisite`; it exercises 101-site batching, reactivation, new sites, deactivation, retention and context restoration.
+WordPress is pinned to 7.1.3. CI also covers 7.0.7 and the 6.2 floor. The compatibility preflight reports unavailable metadata and unsupported PHP pairings explicitly, with no allow-failure entry. The PHP suite uses real installed WordPress APIs. Run the separate multisite job with `composer test -- --group multisite`; it exercises 101-site batching, reactivation, new sites, deactivation, retention and context restoration.
 
 For native disposable installations, set `PIXELPAIR_TEST_WP_ROOT` to the WordPress directory. Set `PIXELPAIR_TEST_HOST` if the network domain differs from localhost. The Docker test wrapper includes port 8889 when booting its network. Native disposable fixtures can use MariaDB; CI runs the pinned wp-env/MySQL and PHP matrix.
 

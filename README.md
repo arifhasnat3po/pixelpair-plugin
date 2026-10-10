@@ -49,8 +49,8 @@ PixelPair uses shared browser/server event IDs. Its server log does not establis
 | Component           | Requirement                                                                     |
 | ------------------- | ------------------------------------------------------------------------------- |
 | Base plugin         | WordPress 6.2+, PHP 7.4+, MySQL/MariaDB                                         |
-| Tested base matrix  | WordPress 6.2, 7.0.6 and 7.1.2 across supported PHP 7.4–8.4 pairings            |
-| WooCommerce fixture | WooCommerce 11.1.2, WordPress 7.1.2, PHP 8.3                                    |
+| Tested base matrix  | WordPress 6.2, 7.0.7 and 7.1.3 across supported PHP 7.4–8.4 pairings            |
+| WooCommerce fixture | WooCommerce 11.1.2, WordPress 7.1.3, PHP 8.3                                    |
 | EDD fixture         | EDD 3.7.1; requires WordPress 6.7+ and PHP 8.0+                                 |
 | AI access           | WordPress 6.9+, official WordPress MCP Adapter, HTTPS and an authorized account |
 

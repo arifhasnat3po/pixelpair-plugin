@@ -28,4 +28,4 @@ node scripts/commerce-concurrency.mjs
 PIXELPAIR_TEST_STORES=1 npx playwright test tests/e2e/commerce.spec.js
 ```
 
-The current store fixture pins WooCommerce 11.1.2 on WordPress 7.1.2 / PHP 8.3. WooCommerce 11.1.2 requires WordPress 7.0 or later; pairing it with PixelPair's WordPress 6.2 floor is unsupported. Test the base plugin separately there. The automated compatibility workflow runs wp-env with MySQL. Vendor requests are intercepted; passing tests do not establish acceptance by Meta Events Manager or Google Analytics.
+The current store fixture pins WooCommerce 11.1.2 on WordPress 7.1.3 / PHP 8.3. WooCommerce 11.1.2 requires WordPress 7.0 or later; pairing it with PixelPair's WordPress 6.2 floor is unsupported. Test the base plugin separately there. The automated compatibility workflow runs wp-env with MySQL. Vendor requests are intercepted; passing tests do not establish acceptance by Meta Events Manager or Google Analytics.
