@@ -1,10 +1,10 @@
-=== Arif PixelPair – Marketing Tracking ===
+=== PixelPair – Marketing Tracking ===
 Contributors: arifhasnat
 Tags: analytics, meta pixel, conversions api, woocommerce, tiktok
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.9.2
+Stable tag: 0.9.3
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,13 +12,13 @@ Connect Meta Pixel, Google Analytics and TikTok, with server events, WooCommerce
 
 == Description ==
 
-Arif PixelPair brings your WordPress tracking into one workspace. Connect Meta, Google Analytics, Google Tag Manager and TikTok, choose what to track, and inspect server delivery results from your dashboard.
+PixelPair brings your WordPress tracking into one workspace. Connect Meta, Google Analytics, Google Tag Manager and TikTok, choose what to track, and inspect server delivery results from your dashboard.
 
 A skippable setup wizard helps you choose connections, paste IDs, check configuration and exclude your own visits. Paste a Meta or Google code snippet and PixelPair extracts the supported ID for you.
 
 Tracking starts disabled. You choose which connections and events to enable.
 
-Arif PixelPair is independently developed by Arif Hasnat. It integrates with Meta, Google Analytics, Google Tag Manager, TikTok, WooCommerce and Easy Digital Downloads. It is not affiliated with or endorsed by those services or their owners.
+PixelPair is independently developed by Arif Hasnat. It integrates with Meta, Google Analytics, Google Tag Manager, TikTok, WooCommerce and Easy Digital Downloads. It is not affiliated with or endorsed by those services or their owners.
 
 = Connections =
 
@@ -141,6 +141,10 @@ Screenshots use demonstration data and do not represent live account results.
 
 == Changelog ==
 
+= 0.9.3 =
+* Use PixelPair – Marketing Tracking as the product name without a personal-name prefix.
+* Update the plugin title, directory banners, documentation and translation source.
+
 = 0.9.2 =
 * Clarify the independent project name and third-party service integrations.
 * Limit consent recommendations to PixelPair screens and hide resolved recommendations.
@@ -157,9 +161,9 @@ Screenshots use demonstration data and do not represent live account results.
 
 == Upgrade Notice ==
 
-= 0.9.2 =
+= 0.9.3 =
 Use the built ZIP to update. Review consent settings, clear page caches and verify your enabled connections after upgrading.
 
 == Credits ==
 
-Arif PixelPair is built by Arif Hasnat.
+PixelPair is built by Arif Hasnat.

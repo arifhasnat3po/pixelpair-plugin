@@ -330,7 +330,7 @@ function SettingsScreen( {
 						window.pixelpairAdmin?.version || ''
 					) }
 					<br />
-					{ __( 'Arif PixelPair – Marketing Tracking', 'pixelpair' ) }
+					{ __( 'PixelPair – Marketing Tracking', 'pixelpair' ) }
 					<br />
 					{ __( 'Built by Arif Hasnat', 'pixelpair' ) }
 				</p>

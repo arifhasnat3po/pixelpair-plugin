@@ -1,10 +1,10 @@
 <p align="left"><img src="brand/pixelpair-logo.svg" width="240" alt="PixelPair" /></p>
 
-# Arif PixelPair – Marketing Tracking
+# PixelPair – Marketing Tracking
 
 Independent marketing tracking integrations for WordPress.
 
-Arif PixelPair is independently developed by Arif Hasnat. It integrates with Meta, Google Analytics, Google Tag Manager, TikTok, WooCommerce and Easy Digital Downloads. It is not affiliated with or endorsed by those services or their owners.
+PixelPair is independently developed by Arif Hasnat. It integrates with Meta, Google Analytics, Google Tag Manager, TikTok, WooCommerce and Easy Digital Downloads. It is not affiliated with or endorsed by those services or their owners.
 
 Connect your advertising and analytics accounts, choose the events to track, and inspect server delivery from WordPress. PixelPair includes a skippable setup wizard, consent controls, a custom event builder, and WooCommerce and Easy Digital Downloads support.
 

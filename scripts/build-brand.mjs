@@ -106,7 +106,7 @@ for ( const size of [ 128, 256 ] ) {
 const banner = svg(
 	772,
 	250,
-	`<rect width="772" height="250" fill="#f6f7f7"/><g transform="translate(48 40) scale(2)">${ inside( logo ) }</g>${ outlined( 'Arif PixelPair', 48, 155, 25 ) }${ outlined( 'Marketing Tracking', 48, 190, 25 ) }`
+	`<rect width="772" height="250" fill="#f6f7f7"/><g transform="translate(48 40) scale(2)">${ inside( logo ) }</g>${ outlined( 'PixelPair', 48, 155, 25 ) }${ outlined( 'Marketing Tracking', 48, 190, 25 ) }`
 );
 await write( '.wordpress-org/banner-772x250.png', png( banner, 772 ) );
 await write( '.wordpress-org/banner-1544x500.png', png( banner, 1544 ) );

@@ -1,8 +1,14 @@
 # Changelog
 
+## 0.9.3 — Product name
+
+- Use PixelPair – Marketing Tracking without a personal-name prefix.
+- Update the plugin title, directory banners, documentation and translation source.
+- Preserve the pixelpair slug, settings and tracking behavior.
+
 ## 0.9.2 — Focused admin notices and independent identity
 
-- Use the display name Arif PixelPair – Marketing Tracking; keep the pixelpair slug and existing settings.
+- Clarify the independent project identity; keep the pixelpair slug and existing settings.
 - Scope consent recommendations to the plugin screen, retain secure dismissal and hide resolved recommendations.
 - Scope migration errors to relevant management screens.
 - Update directory banners, service disclosures, translations and documentation.

@@ -1,4 +1,4 @@
-# Arif PixelPair documentation
+# PixelPair documentation
 
 Start with [Getting started](guides/getting-started.md) to install the built plugin and connect Meta. Every guide uses the labels shown in WordPress.
 

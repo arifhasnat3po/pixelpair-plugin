@@ -10,4 +10,4 @@ Filter by platform, status and time range. Expand an entry to inspect the redact
 
 Activity reports server delivery attempts. It cannot establish that a browser event arrived or that an advertising platform deduplicated it. Verify those outcomes in the platform's own event manager.
 
-To diagnose missing browser events, follow [Troubleshooting](troubleshooting.md). Arif PixelPair loads each enabled platform through its connection settings; it does not include an arbitrary header or footer script editor.
+To diagnose missing browser events, follow [Troubleshooting](troubleshooting.md). PixelPair loads each enabled platform through its connection settings; it does not include an arbitrary header or footer script editor.

@@ -13,7 +13,7 @@ namespace PixelPair\Admin;
 final class Menu {
 	/** Add one top-level menu for the site-scoped app. */
 	public function register(): void {
-		add_menu_page( __( 'Arif PixelPair – Marketing Tracking', 'pixelpair' ), __( 'PixelPair', 'pixelpair' ), 'manage_pixelpair', 'pixelpair', array( $this, 'render' ), self::icon() );
+		add_menu_page( __( 'PixelPair – Marketing Tracking', 'pixelpair' ), __( 'PixelPair', 'pixelpair' ), 'manage_pixelpair', 'pixelpair', array( $this, 'render' ), self::icon() );
 		add_submenu_page( 'pixelpair', __( 'Overview', 'pixelpair' ), __( 'Overview', 'pixelpair' ), 'manage_pixelpair', 'pixelpair', array( $this, 'render' ) );
 		$routes = array(
 			'connections' => __( 'Connections', 'pixelpair' ),

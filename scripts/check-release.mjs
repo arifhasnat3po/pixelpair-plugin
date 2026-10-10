@@ -55,7 +55,7 @@ const installed = JSON.parse(
 );
 const header = zip.readAsText( 'pixelpair/pixelpair.php' );
 const readme = zip.readAsText( 'pixelpair/readme.txt' );
-const displayName = 'Arif PixelPair – Marketing Tracking';
+const displayName = 'PixelPair – Marketing Tracking';
 assert.ok( header.includes( `Plugin Name: ${ displayName }` ) );
 assert.ok( readme.startsWith( `=== ${ displayName } ===` ) );
 assert.ok( header.includes( 'Text Domain: pixelpair' ) );

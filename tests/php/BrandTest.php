@@ -25,7 +25,7 @@ final class BrandTest extends LifecycleTestCase {
 		$this->assertStringContainsString( 'fill="black"', $svg );
 		$this->assertStringNotContainsString( '<text', $svg );
 		$header = get_plugin_data( PIXELPAIR_FILE, false, false );
-		$this->assertSame( 'Arif PixelPair – Marketing Tracking', $header['Name'] );
+		$this->assertSame( 'PixelPair – Marketing Tracking', $header['Name'] );
 		$this->assertSame( 'Arif Hasnat', $header['Author'] );
 		$this->assertSame( 'https://github.com/arifhasnat3po', $header['AuthorURI'] );
 	}

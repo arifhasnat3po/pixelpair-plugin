@@ -1,6 +1,6 @@
 {
 	"name": "pixelpair/pixelpair",
-	"description": "Arif PixelPair marketing tracking with independent third-party integrations.",
+	"description": "PixelPair marketing tracking with independent third-party integrations.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
 	"require": {
