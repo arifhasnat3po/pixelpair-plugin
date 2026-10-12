@@ -61,6 +61,21 @@ assert.ok( readme.startsWith( `=== ${ displayName } ===` ) );
 assert.ok( header.includes( 'Text Domain: pixelpair' ) );
 assert.ok( readme.includes( 'Contributors: arifhasnat' ) );
 assert.ok( readme.includes( 'not affiliated with or endorsed' ) );
+for ( const page of [
+	'',
+	'guides/getting-started.html',
+	'screenshots.html',
+] ) {
+	assert.ok(
+		readme.includes(
+			`https://arifhasnat3po.github.io/pixelpair-plugin/${ page }`
+		)
+	);
+}
+assert.ok(
+	! readme.includes( '/blob/main/docs/' ),
+	'Use published documentation pages in the directory readme.'
+);
 assert.ok(
 	zip
 		.readAsText( 'pixelpair/vendor/composer/autoload_classmap.php' )

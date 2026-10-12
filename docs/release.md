@@ -12,6 +12,7 @@ npm run check:front-size
 npm run check:admin-size
 npm run build:release
 npm run test:release
+npm run build:docs
 ```
 
 Set `PIXELPAIR_PHP` to a PHP executable and `PIXELPAIR_COMPOSER` to a Composer PHAR when they are not on PATH. An optional first argument to `scripts/build-release.mjs` selects the output directory. Each build uses a fresh `.cache/release-*` staging directory, runs Composer without development dependencies there, checks assets/version metadata and emits a ZIP plus SHA-256 digest. Timestamps, ordering and Unix permissions are fixed, allowing identical builds from identical inputs. The main development vendor directory is never replaced. The illustrated guides and their screenshots remain in the repository; the ZIP includes a bundled offline guide and technical reference documents. The ZIP contains one top-level `pixelpair/` folder, production autoload files, compiled scripts and their readable source, translations and user documentation. Development tools/tests and credentials are excluded.
@@ -27,3 +28,9 @@ The built package contains `vendor/autoload.php`. The bootstrap can still load P
 The optional EDD 3.7.1 fixture needs PHP 8.0+ and WP 6.7+; WooCommerce 11.1.2 needs WP 7.0+; MCP Adapter 0.6.1 needs WP 6.9+. These extensions cannot be combined with every base-plugin compatibility floor. Unsupported combinations are reported explicitly. PHP 8.4 passed the local MariaDB and remote MySQL base suites. The old SQLite adapter is not a supported identity-migration database because it does not execute the required table renames.
 
 Release checks run in the repository’s Quality workflow. Live Meta/TikTok event dashboards, Pixel Helper, GA4 DebugView, commercial subscription extensions and production cache/host configurations remain external acceptance checks. Automated interception tests do not prove vendor account acceptance. A built ZIP or local Plugin Check result is not WordPress.org approval; no directory submission occurs automatically.
+
+## Published documentation
+
+The public documentation lives at <https://arifhasnat3po.github.io/pixelpair-plugin/>. Run `npm run build:docs` to render the Markdown guides, copy their images and validate every internal page, image and anchor. Output stays in `.cache/docs-site/` and is excluded from the plugin ZIP and Git history. Only public documentation and the directory banner are copied; the workflow never publishes the repository root.
+
+The Documentation workflow builds on pull requests and publishes from `main` through GitHub Pages. After publication, verify the readme's Getting started, Documentation and Screenshots links without signing in. Also check the plugin and author URLs and external-service terms/privacy links. A successful local build does not establish that a remote site is reachable; perform the anonymous HTTP checks before submitting a release.

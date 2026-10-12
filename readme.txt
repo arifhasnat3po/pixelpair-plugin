@@ -4,7 +4,7 @@ Tags: analytics, meta pixel, conversions api, woocommerce, tiktok
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.9.3
+Stable tag: 0.9.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,7 +50,7 @@ WooCommerce and Easy Digital Downloads are optional. Their own WordPress and PHP
 
 PixelPair has no telemetry, advertisements or upsells. Enabled tracking connections communicate with the external services described below. It does not guarantee platform acceptance, attribution accuracy or compliance with privacy laws.
 
-[Getting started](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/guides/getting-started.md) | [Documentation](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/README.md) | [Screenshots](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/screenshots.md)
+[Getting started](https://arifhasnat3po.github.io/pixelpair-plugin/guides/getting-started.html) | [Documentation](https://arifhasnat3po.github.io/pixelpair-plugin/) | [Screenshots](https://arifhasnat3po.github.io/pixelpair-plugin/screenshots.html)
 
 = Consent and personal data =
 
@@ -78,7 +78,7 @@ When enabled and the required consent is granted, Google scripts load from googl
 
 When enabled and marketing consent allows, the browser loads the TikTok Pixel script from analytics.tiktok.com. Server events are sent to business-api.tiktok.com using your credentials. TikTok can receive page, product and event details, values, IP addresses, user agents, browser/click identifiers and optional hashed contact fields. Requests occur for permitted tracked actions, authorized connection tests and queued retries.
 
-[TikTok business terms](https://ads.tiktok.com/i18n/official/policy/business-products-terms) | [TikTok privacy policy](https://www.tiktok.com/legal/page/row/privacy-policy/en)
+[TikTok advertiser terms overview](https://ads.tiktok.com/resources/help/article/tiktok-advertiser-tools-and-related-terms?lang=en) | [TikTok privacy policy](https://www.tiktok.com/legal/page/row/privacy-policy/en)
 
 **Optional AI access**
 
@@ -141,6 +141,10 @@ Screenshots use demonstration data and do not represent live account results.
 
 == Changelog ==
 
+= 0.9.4 =
+* Publish illustrated documentation on a dedicated public site and update documentation links.
+* Check documentation pages, images and internal links automatically before publishing.
+
 = 0.9.3 =
 * Use PixelPair – Marketing Tracking as the product name without a personal-name prefix.
 * Update the plugin title, directory banners, documentation and translation source.
@@ -161,7 +165,7 @@ Screenshots use demonstration data and do not represent live account results.
 
 == Upgrade Notice ==
 
-= 0.9.3 =
+= 0.9.4 =
 Use the built ZIP to update. Review consent settings, clear page caches and verify your enabled connections after upgrading.
 
 == Credits ==

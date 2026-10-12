@@ -182,6 +182,26 @@ jobs:
             - run: npm run check:front-size
             - run: npm run build:release
             - run: npm run test:release
+            - name: Prepare clean installed-package check
+              run: |
+                  node --input-type=module -e 'import fs from "node:fs"; import AdmZip from "adm-zip"; new AdmZip("releases/pixelpair.zip").extractAllTo(".cache/package-check"); fs.writeFileSync(".wp-env.override.json", JSON.stringify({plugins:["./.cache/package-check/pixelpair","https://downloads.wordpress.org/plugin/plugin-check.2.1.0.zip"],config:{WP_DEBUG:true,WP_DEBUG_LOG:true,WP_DEBUG_DISPLAY:false}}));'
+            - run: npx --no-install wp-env start
+            - name: Check the exact release ZIP on clean WordPress
+              run: |
+                  npx --no-install wp-env run cli wp plugin activate pixelpair plugin-check
+                  npx --no-install wp-env run cli wp --skip-themes --require=/var/www/html/wp-content/plugins/plugin-check/cli.php plugin check /var/www/html/wp-content/plugins/pixelpair --slug=pixelpair --format=json > plugin-check.log
+                  cat plugin-check.log
+                  npx --no-install wp-env run cli wp eval 'if (!WP_DEBUG || !defined("PIXELPAIR_VERSION") || !current_user_can("manage_pixelpair")) { throw new RuntimeException("Installed-package debug/activation check failed."); } echo "Installed PixelPair " . PIXELPAIR_VERSION;' --user=admin
+            - name: Inspect clean WordPress debug log
+              run: |
+                  npx --no-install wp-env run cli sh -c 'if test -s /var/www/html/wp-content/debug.log; then cat /var/www/html/wp-content/debug.log; exit 1; fi'
+            - if: always()
+              run: npx --no-install wp-env stop
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: release-plugin-check
+                  path: pixelpair/plugin-check.log
             - uses: actions/upload-artifact@v4
               with:
                   name: pixelpair-release

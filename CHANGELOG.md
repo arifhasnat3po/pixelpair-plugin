@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.4 — Public documentation
+
+- Publish the illustrated guides and screenshots as a standalone documentation site.
+- Replace repository file-view links in the plugin readme with public documentation URLs.
+- Validate generated pages, internal links, anchors and images before each documentation deployment.
+- Keep tracking behavior, settings storage and REST contracts unchanged.
+
 ## 0.9.3 — Product name
 
 - Use PixelPair – Marketing Tracking without a personal-name prefix.

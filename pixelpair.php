@@ -3,7 +3,7 @@
  * Plugin Name: PixelPair – Marketing Tracking
  * Plugin URI: https://github.com/arifhasnat3po/pixelpair-plugin
  * Description: Configure marketing pixels and conversion APIs from WordPress.
- * Version: 0.9.3
+ * Version: 0.9.4
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * Author: Arif Hasnat
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PIXELPAIR_VERSION', '0.9.3' );
+define( 'PIXELPAIR_VERSION', '0.9.4' );
 define( 'PIXELPAIR_FILE', __FILE__ );
 define( 'PIXELPAIR_PATH', __DIR__ . '/' );
 

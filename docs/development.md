@@ -1,6 +1,6 @@
 # Developing PixelPair
 
-PixelPair includes browser/server connections, automatic and custom events, WooCommerce/EDD tracking, configuration transfer and authenticated MCP access. See [CAPI operations](capi.md) and the [documentation index](https://github.com/arifhasnat3po/pixelpair-plugin/blob/main/docs/README.md).
+PixelPair includes browser/server connections, automatic and custom events, WooCommerce/EDD tracking, configuration transfer and authenticated MCP access. See [CAPI operations](capi.md) and the [documentation index](https://arifhasnat3po.github.io/pixelpair-plugin/).
 
 ## Setup and checks
 

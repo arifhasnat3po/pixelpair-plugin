@@ -11,7 +11,7 @@ Connect your advertising and analytics accounts, choose the events to track, and
 [![Quality](https://github.com/arifhasnat3po/pixelpair-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/arifhasnat3po/pixelpair-plugin/actions/workflows/ci.yml)
 [![License: GPL v2 or later](https://img.shields.io/badge/license-GPL--2.0--or--later-blue.svg)](LICENSE)
 
-[Download the installable plugin](https://github.com/arifhasnat3po/pixelpair-plugin/releases/latest/download/pixelpair.zip) · [Illustrated documentation](docs/README.md) · [Release notes](CHANGELOG.md)
+[Download the installable plugin](https://github.com/arifhasnat3po/pixelpair-plugin/releases/latest/download/pixelpair.zip) · [Illustrated documentation](https://arifhasnat3po.github.io/pixelpair-plugin/) · [Release notes](CHANGELOG.md)
 
 ![PixelPair Overview with connection status and setup actions](docs/images/overview.png)
 
